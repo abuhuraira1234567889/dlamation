@@ -42,8 +42,8 @@ const Option = styled(FancyButton)<{ active: boolean }>`
   :hover {
     cursor: pointer;
   }
-  background-color: ${({ active, theme }) => active && theme.primary1};
-  color: ${({ active, theme }) => (active ? theme.white : theme.text1)};
+  background-color: #212429;
+  color: white;
 `
 
 const Input = styled.input`
@@ -64,6 +64,7 @@ const OptionCustom = styled(FancyButton)<{ active?: boolean; warning?: boolean }
   position: relative;
   padding: 0 0.75rem;
   flex: 1;
+  background:#212429 !important;
   border: ${({ theme, active, warning }) => active && `1px solid ${warning ? theme.red1 : theme.primary1}`};
   :hover {
     border: ${({ theme, active, warning }) =>
@@ -75,6 +76,7 @@ const OptionCustom = styled(FancyButton)<{ active?: boolean; warning?: boolean }
     height: 100%;
     border: 0px;
     border-radius: 2rem;
+    background:#212429;
   }
 `
 
@@ -242,7 +244,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
               onChange={e => parseCustomDeadline(e.target.value)}
             />
           </OptionCustom>
-          <TYPE.body style={{ paddingLeft: '8px' }} fontSize={14}>
+          <TYPE.body style={{ paddingLeft: '8px',color:"white" }} fontSize={14}>
             minutes
           </TYPE.body>
         </RowFixed>

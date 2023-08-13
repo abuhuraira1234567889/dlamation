@@ -32,13 +32,15 @@ import { OpenClaimAddressModalAndRedirectToSwap, RedirectPathToSwapOnly, Redirec
 
 import Vote from './Vote'
 import VotePage from './Vote/VotePage'
+import Home from './Home/Home'
+import Footer from '../components/Footer'
 
 const AppWrapper = styled.div`
   display: flex;
   flex-flow: column;
   align-items: flex-start;
   overflow-x: hidden;
-  background-image: url(${background});
+  // background-image: url(${background});
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -86,7 +88,8 @@ export default function App() {
       <Route component={GoogleAnalyticsReporter} />
       <Route component={DarkModeQueryParamReader} />
       <AppWrapper>
-        <URLWarning />
+        {/* <URLWarning /> */}
+        
         <HeaderWrapper>
           <Header />
         </HeaderWrapper>
@@ -96,6 +99,7 @@ export default function App() {
           <TopLevelModals />
           <Web3ReactManager>
             <Switch>
+              {/* <Route exact strict path="/" component={Home} /> */}
               <Route exact strict path="/swap" component={Swap} />
               <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} />
               <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
@@ -122,6 +126,7 @@ export default function App() {
             </Switch>
           </Web3ReactManager>
           <Marginer />
+            {/* <Footer/> */}
         </BodyWrapper>
       </AppWrapper>
     </Suspense>

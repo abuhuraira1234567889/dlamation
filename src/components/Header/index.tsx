@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 import styled from 'styled-components'
+import Dalimation from '../../assets/svg/daltamation.svg'
 
 import Logo from '../../assets/svg/logo.svg'
 import LogoDark from '../../assets/svg/logo_white.svg'
@@ -29,6 +30,8 @@ import { Dots } from '../swap/styleds'
 import Modal from '../Modal'
 import UniBalanceContent from './UniBalanceContent'
 import usePrevious from '../../hooks/usePrevious'
+import Shabrium from "../../assets/svg/shablogo.svg"
+import './index.css'
 
 const HeaderFrame = styled.div`
   display: grid;
@@ -134,7 +137,7 @@ const UNIAmount = styled(AccountElement)`
   height: 36px;
   font-weight: 200;
   background-color: ${({ theme }) => theme.bg3};
-  background: #FFB800;
+  background: #ffb800;
   // background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
 `
 
@@ -264,6 +267,8 @@ const StyledExternalLink = styled(ExternalLink).attrs({
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
+  [ChainId.MAINNET]: 'Mainnet',
+
   [ChainId.RINKEBY]: 'Rinkeby',
   [ChainId.ROPSTEN]: 'Ropsten',
   [ChainId.GÖRLI]: 'Görli',
@@ -292,61 +297,112 @@ export default function Header() {
   const countUpValuePrevious = usePrevious(countUpValue) ?? '0'
 
   return (
-    <HeaderFrame>
-      <ClaimModal />
-      <Modal isOpen={showUniBalanceModal} onDismiss={() => setShowUniBalanceModal(false)}>
-        <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
-      </Modal>
-      <HeaderRow>
-        <Title href=".">
-          <UniIcon>
-            <img width={'56px'} height={'56px'} src={isDark ? LogoDark : Logo} alt="logo" />
-          </UniIcon>
-        </Title>
-        <HeaderLinks>
-          <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
-            {t('swap')}
-          </StyledNavLink>
-          <StyledNavLink
-            id={`pool-nav-link`}
-            to={'/pool'}
-            isActive={(match, { pathname }) =>
-              Boolean(match) ||
-              pathname.startsWith('/add') ||
-              pathname.startsWith('/remove') ||
-              pathname.startsWith('/create') ||
-              pathname.startsWith('/find')
-            }
-          >
-            {t('pool')}
-          </StyledNavLink>
-          <StyledNavLink id={`stake-nav-link`} to={'/uni'}>
-            UNI
-          </StyledNavLink>
-          <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
-            Vote
-          </StyledNavLink>
-          <StyledExternalLink id={`stake-nav-link`} href={'https://uniswap.info'}>
-            Charts <span style={{ fontSize: '11px' }}>↗</span>
-          </StyledExternalLink>
-        </HeaderLinks>
-      </HeaderRow>
-      <HeaderControls>
-        <HeaderElement>
-          
-          <UNIWrapper >
+    <>
+      <HeaderFrame>
+        <ClaimModal />
+        <Modal isOpen={showUniBalanceModal} onDismiss={() => setShowUniBalanceModal(false)}>
+          <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
+        </Modal>
+        <HeaderRow>
+          <Title href=".">
+            <UniIcon>
+              <img src={Dalimation} alt="logo" />
+            </UniIcon>
+          </Title>
+          <div className="dropdown">
+            <button className="dropbtn">Trade</button>
+            <div className="dropdown-content">
+              <a href="#">Swap</a>
+              <a href="#"> Liquidity</a>
+              {/* <a href="#">Link 3</a> */}
+            </div>
+          </div>
+          <div className="dropdown">
+            <button className="dropbtn">Earn</button>
+            <div className="dropdown-content">
+              <a href="#">Swap</a>
+              <a href="#"> Liquidity</a>
+              {/* <a href="#">Link 3</a> */}
+            </div>
+          </div>
+          <div className="dropdown">
+            <button className="dropbtn">xDAL</button>
+            <div className="dropdown-content">
+              <a href="#">Swap</a>
+              <a href="#"> Liquidity</a>
+              {/* <a href="#">Link 3</a> */}
+            </div>
+          </div>
+          <div className="dropdown">
+            <button className="dropbtn">Round Table</button>
+           
+          </div>
+          <div className="dropdown">
+            <button className="dropbtn">Launchpad</button>
+            
+          </div>
+          <div className="dropdown">
+            <button className="dropbtn">More</button>
+            
+          </div>
+
+          {/* <HeaderLinks>
+            <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
+              {t('Trade')}
+            </StyledNavLink>
+            <StyledNavLink
+              id={`pool-nav-link`}
+              to={'/pool'}
+              isActive={(match, { pathname }) =>
+                Boolean(match) ||
+                pathname.startsWith('/add') ||
+                pathname.startsWith('/remove') ||
+                pathname.startsWith('/create') ||
+                pathname.startsWith('/find')
+              }
+            >
+              {t('Earn')}
+            </StyledNavLink>
+            <StyledNavLink id={`stake-nav-link`} to={'/uni'}>
+              xDAL
+            </StyledNavLink>
+            <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
+              Vote
+            </StyledNavLink>
+            <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
+              Round Table
+            </StyledNavLink>
+            <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
+              Launchpad
+            </StyledNavLink>
+            <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
+              More
+            </StyledNavLink>
+          </HeaderLinks> */}
+        </HeaderRow>
+        <HeaderControls>
+          <HeaderElement>
+            {/* <UNIWrapper>
               <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
                 <TYPE.white padding="0 2px">
-                  {claimTxn && !claimTxn?.receipt ? <Dots>Claiming UNI</Dots> : <HideSmall>
-            {chainId && NETWORK_LABELS[chainId] && (
-              <NetworkCard title={NETWORK_LABELS[chainId]}>{NETWORK_LABELS[chainId]}</NetworkCard>
-            )}
-          </HideSmall>}
+                  {claimTxn && !claimTxn?.receipt ? (
+                    <Dots>Claiming UNI</Dots>
+                  ) : (
+                    <HideSmall>
+                      {chainId && NETWORK_LABELS[chainId] && (
+                        <NetworkCard title={NETWORK_LABELS[chainId]}>{NETWORK_LABELS[chainId]}</NetworkCard>
+                      )}
+                    </HideSmall>
+                  )}
                 </TYPE.white>
               </UNIAmount>
               <CardNoise />
-          </UNIWrapper>
-          {/* {availableClaim && !showClaimPopup && (
+            </UNIWrapper> */}
+            <div style={{display:"flex"}}>
+              <img src={Shabrium}/>
+              <p style={{marginLeft:"10px",marginRight:"10px",color:"white"}}>Shibarium</p>
+            </div>
+            {/* {availableClaim && !showClaimPopup && (
             <UNIWrapper onClick={toggleClaimModal}>
               <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
                 <TYPE.white padding="0 2px">
@@ -382,20 +438,21 @@ export default function Header() {
               <CardNoise />
             </UNIWrapper>
           )}  */}
-          <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
-            {account && userEthBalance ? (
-              <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                {userEthBalance?.toSignificant(4)} ETH
-              </BalanceText>
-            ) : null}
-            <Web3Status />
-          </AccountElement>
-        </HeaderElement>
-        <HeaderElementWrap>
-          <Settings />
-          <Menu />
-        </HeaderElementWrap>
-      </HeaderControls>
-    </HeaderFrame>
+            <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
+              {/* {account && userEthBalance ? (
+                <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
+                  {userEthBalance?.toSignificant(4)} ETH
+                </BalanceText>
+              ) : null} */}
+              <Web3Status />
+            </AccountElement>
+          </HeaderElement>
+          {/* <HeaderElementWrap>
+            <Settings />
+            <Menu />
+          </HeaderElementWrap> */}
+        </HeaderControls>
+      </HeaderFrame>
+    </>
   )
 }
