@@ -55,14 +55,15 @@ const Input = styled.input`
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
-  color: ${({ theme, color }) => (color === 'red' ? theme.red1 : theme.text1)};
-  text-align: right;
+  color: white;
+  text-align: left;
 `
 
 const OptionCustom = styled(FancyButton)<{ active?: boolean; warning?: boolean }>`
-  height: 2rem;
+  height: 3rem;
   position: relative;
   padding: 0 0.75rem;
+  border-radius: 10px;
   flex: 1;
   background:#212429 !important;
   border: ${({ theme, active, warning }) => active && `1px solid ${warning ? theme.red1 : theme.primary1}`};
@@ -151,12 +152,12 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
       <AutoColumn gap="sm">
         <RowFixed>
           <TYPE.black fontWeight={400} fontSize={14} color={theme.text2}>
-            Slippage tolerance
+            Slippage tolerance (%)
           </TYPE.black>
           <QuestionHelper text="Your transaction will revert if the price changes unfavorably by more than this percentage." />
         </RowFixed>
         <RowBetween>
-          <Option
+          {/* <Option
             onClick={() => {
               setSlippageInput('')
               setRawSlippage(10)
@@ -164,8 +165,8 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
             active={rawSlippage === 10}
           >
             0.1%
-          </Option>
-          <Option
+          </Option> */}
+          {/* <Option
             onClick={() => {
               setSlippageInput('')
               setRawSlippage(50)
@@ -173,8 +174,8 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
             active={rawSlippage === 50}
           >
             0.5%
-          </Option>
-          <Option
+          </Option> */}
+          {/* <Option
             onClick={() => {
               setSlippageInput('')
               setRawSlippage(100)
@@ -182,7 +183,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
             active={rawSlippage === 100}
           >
             1%
-          </Option>
+          </Option> */}
           <OptionCustom active={![10, 50, 100].includes(rawSlippage)} warning={!slippageInputIsValid} tabIndex={-1}>
             <RowBetween>
               {!!slippageInput &&
@@ -204,7 +205,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
                 onChange={e => parseCustomSlippage(e.target.value)}
                 color={!slippageInputIsValid ? 'red' : ''}
               />
-              %
+             
             </RowBetween>
           </OptionCustom>
         </RowBetween>
@@ -228,12 +229,12 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
       <AutoColumn gap="sm">
         <RowFixed>
           <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-            Transaction deadline
+            Transaction deadline (min)
           </TYPE.black>
           <QuestionHelper text="Your transaction will revert if it is pending for more than this long." />
         </RowFixed>
-        <RowFixed>
-          <OptionCustom style={{ width: '80px' }} tabIndex={-1}>
+        <RowFixed style={{width:"100%"}}>
+          <OptionCustom style={{ width: '100%' }} tabIndex={-1}>
             <Input
               color={!!deadlineError ? 'red' : undefined}
               onBlur={() => {
@@ -244,9 +245,9 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
               onChange={e => parseCustomDeadline(e.target.value)}
             />
           </OptionCustom>
-          <TYPE.body style={{ paddingLeft: '8px',color:"white" }} fontSize={14}>
+          {/* <TYPE.body style={{ paddingLeft: '8px',color:"white" }} fontSize={14}>
             minutes
-          </TYPE.body>
+          </TYPE.body> */}
         </RowFixed>
       </AutoColumn>
     </AutoColumn>

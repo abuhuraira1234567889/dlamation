@@ -89,7 +89,7 @@ export default function App() {
       <Route component={DarkModeQueryParamReader} />
       <AppWrapper>
         {/* <URLWarning /> */}
-        
+
         <HeaderWrapper>
           <Header />
         </HeaderWrapper>
@@ -126,7 +126,7 @@ export default function App() {
             </Switch>
           </Web3ReactManager>
           <Marginer />
-            <Footer/>
+          <Footer />
         </BodyWrapper>
       </AppWrapper>
     </Suspense>

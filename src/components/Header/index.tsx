@@ -313,7 +313,7 @@ export default function Header() {
             <button className="dropbtn">Trade</button>
             <div className="dropdown-content">
               <a href="#">Swap</a>
-              <a href="#"> Liquidity</a>
+              <a href="/#/add"> Liquidity</a>
               {/* <a href="#">Link 3</a> */}
             </div>
           </div>

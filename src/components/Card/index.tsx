@@ -16,6 +16,7 @@ export default Card
 export const LightCard = styled(Card)`
   border: 1px solid ${({ theme }) => theme.bg2};
   background-color: ${({ theme }) => theme.bg1};
+  color:white !important;
 `
 
 export const GreyCard = styled(Card)`
@@ -50,7 +51,7 @@ const BlueCardStyled = styled(Card)`
 export const BlueCard = ({ children, ...rest }: CardProps) => {
   return (
     <BlueCardStyled {...rest}>
-      <Text fontWeight={500} color="#2172E5">
+      <Text fontWeight={500} color="white">
         {children}
       </Text>
     </BlueCardStyled>

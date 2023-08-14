@@ -12,6 +12,7 @@ const Column = styled.div`
 export const ColumnCenter = styled(Column)`
   width: 100%;
   align-items: center;
+  background:transparent !important;
 `
 
 export const AutoColumn = styled.div<{

@@ -355,7 +355,7 @@ export default function AddLiquidity({
               id="add-liquidity-input-tokena"
               showCommonBases
             />
-            <ColumnCenter>
+            <ColumnCenter style={{background:"transparent"}}>
               <Plus size="16" color={theme.text2} />
             </ColumnCenter>
             <CurrencyInputPanel
@@ -374,7 +374,7 @@ export default function AddLiquidity({
               <>
                 <LightCard padding="0px" borderRadius={'20px'}>
                   <RowBetween padding="1rem">
-                    <TYPE.subHeader fontWeight={500} fontSize={14}>
+                    <TYPE.subHeader style={{color:"white"}} fontWeight={500} fontSize={14}>
                       {noLiquidity ? 'Initial prices' : 'Prices'} and pool share
                     </TYPE.subHeader>
                   </RowBetween>{' '}

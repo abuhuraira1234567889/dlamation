@@ -46,6 +46,7 @@ const StyledNavLink = styled(NavLink).attrs({
 const ActiveText = styled.div`
   font-weight: 500;
   font-size: 20px;
+  color:white;
 `
 
 const StyledArrowLeft = styled(ArrowLeft)`
@@ -84,9 +85,9 @@ export function AddRemoveTabs({ adding, creating }: { adding: boolean; creating:
   return (
     <Tabs>
       <RowBetween style={{ padding: '1rem' }}>
-        <HistoryLink to="/pool">
+        {/* <HistoryLink to="/pool">
           <StyledArrowLeft />
-        </HistoryLink>
+        </HistoryLink> */}
         <ActiveText>{creating ? 'Create a pair' : adding ? 'Add Liquidity' : 'Remove Liquidity'}</ActiveText>
         <QuestionHelper
           text={
