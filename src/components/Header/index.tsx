@@ -30,8 +30,9 @@ import { Dots } from '../swap/styleds'
 import Modal from '../Modal'
 import UniBalanceContent from './UniBalanceContent'
 import usePrevious from '../../hooks/usePrevious'
-import Shabrium from "../../assets/svg/shablogo.svg"
+import Shabrium from '../../assets/svg/shablogo.svg'
 import './index.css'
+import Humberger from '../../assets/svg/humpburger.svg'
 
 const HeaderFrame = styled.div`
   display: grid;
@@ -43,9 +44,9 @@ const HeaderFrame = styled.div`
   width: 100%;
   top: 0;
   position: relative;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding: 1rem;
-  
+
   z-index: 2;
   ${({ theme }) => theme.mediaWidth.upToMedium`
     grid-template-columns: 1fr;
@@ -102,6 +103,12 @@ const HeaderElementWrap = styled.div`
 const HeaderRow = styled(RowFixed)`
   ${({ theme }) => theme.mediaWidth.upToMedium`
    width: 100%;
+  @media(max-width:990px){
+    flex-direction:column !important;
+    align-items: flex-start;
+    padding:20px
+  }
+
   `};
 `
 
@@ -278,6 +285,7 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
   const { t } = useTranslation()
+  const [navOpen, setNavOpen] = useState(false)
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [isDark] = useDarkModeManager()
@@ -309,41 +317,40 @@ export default function Header() {
               <img src={Dalimation} alt="logo" />
             </UniIcon>
           </Title>
-          <div className="dropdown">
-            <button className="dropbtn">Trade</button>
-            <div className="dropdown-content">
-              <a href="#">Swap</a>
-              <a href="/#/add"> Liquidity</a>
-              {/* <a href="#">Link 3</a> */}
+          <div className={navOpen ? 'navbarOpen' : 'navshow'}>
+            <div className="dropdown">
+              <button className="dropbtn">Trade</button>
+              <div className="dropdown-content">
+                <a href="#">Swap</a>
+                <a href="/#/add"> Liquidity</a>
+                {/* <a href="#">Link 3</a> */}
+              </div>
             </div>
-          </div>
-          <div className="dropdown">
-            <button className="dropbtn">Earn</button>
-            <div className="dropdown-content">
-              <a href="#">Swap</a>
-              <a href="#"> Liquidity</a>
-              {/* <a href="#">Link 3</a> */}
+            <div className="dropdown">
+              <button className="dropbtn">Earn</button>
+              <div className="dropdown-content">
+                <a href="#">Swap</a>
+                <a href="#"> Liquidity</a>
+                {/* <a href="#">Link 3</a> */}
+              </div>
             </div>
-          </div>
-          <div className="dropdown">
-            <button className="dropbtn">xDAL</button>
-            <div className="dropdown-content">
-              <a href="#">Swap</a>
-              <a href="#"> Liquidity</a>
-              {/* <a href="#">Link 3</a> */}
+            <div className="dropdown">
+              <button className="dropbtn">xDAL</button>
+              <div className="dropdown-content">
+                <a href="#">Swap</a>
+                <a href="#"> Liquidity</a>
+                {/* <a href="#">Link 3</a> */}
+              </div>
             </div>
-          </div>
-          <div className="dropdown">
-            <button className="dropbtn">Round Table</button>
-           
-          </div>
-          <div className="dropdown">
-            <button className="dropbtn">Launchpad</button>
-            
-          </div>
-          <div className="dropdown">
-            <button className="dropbtn">More</button>
-            
+            <div className="dropdown">
+              <button className="dropbtn">Round Table</button>
+            </div>
+            <div className="dropdown">
+              <button className="dropbtn">Launchpad</button>
+            </div>
+            <div className="dropdown">
+              <button className="dropbtn">More</button>
+            </div>
           </div>
 
           {/* <HeaderLinks>
@@ -380,6 +387,14 @@ export default function Header() {
             </StyledNavLink>
           </HeaderLinks> */}
         </HeaderRow>
+        <div
+          onClick={() => {
+            setNavOpen(!navOpen)
+          }}
+          className="burger"
+        >
+          <img style={{ width: '50px' }} src={Humberger} />
+        </div>
         <HeaderControls>
           <HeaderElement>
             {/* <UNIWrapper>
@@ -398,9 +413,9 @@ export default function Header() {
               </UNIAmount>
               <CardNoise />
             </UNIWrapper> */}
-            <div style={{display:"flex"}}>
-              <img src={Shabrium}/>
-              <p style={{marginLeft:"10px",marginRight:"10px",color:"white"}}>Shibarium</p>
+            <div style={{ display: 'flex' }}>
+              <img src={Shabrium} />
+              <p style={{ marginLeft: '10px', marginRight: '10px', color: 'white' }}>Shibarium</p>
             </div>
             {/* {availableClaim && !showClaimPopup && (
             <UNIWrapper onClick={toggleClaimModal}>

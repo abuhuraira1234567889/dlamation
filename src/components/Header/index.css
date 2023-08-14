@@ -44,3 +44,27 @@
   .dropdown:hover .dropbtn {
     background-color: transparent;
   }
+  @media (max-width:990px){
+    .burger{
+  
+      position:absolute !important;
+      right:0%;
+      top:10%;
+    }
+    .navshow{
+      display:none;
+    }
+    .navbarOpen{
+      display:flex;
+      flex-direction:column;
+      width: 100%;
+      align-items: center;
+    }
+  }
+  @media (min-width:990px){
+    .burger{
+      display:none;
+      position:absolute !important;
+      right:0%;
+    }
+  }
