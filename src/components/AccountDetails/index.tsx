@@ -24,9 +24,10 @@ import { ExternalLink, LinkStyledButton, TYPE } from '../../theme'
 
 const HeaderRow = styled.div`
   ${({ theme }) => theme.flexRowNoWrap};
+  background:#1A1A1A;
   padding: 1rem 1rem;
   font-weight: 500;
-  color: ${props => (props.color === 'blue' ? ({ theme }) => theme.primary1 : 'inherit')};
+  color: white !important;
   ${({ theme }) => theme.mediaWidth.upToMedium`
     padding: 1rem;
   `};
@@ -34,6 +35,8 @@ const HeaderRow = styled.div`
 
 const UpperSection = styled.div`
   position: relative;
+  background:#1A1A1A;
+
 
   h5 {
     margin: 0;
@@ -54,12 +57,13 @@ const UpperSection = styled.div`
 
 const InfoCard = styled.div`
   padding: 1rem;
-  border: 1px solid ${({ theme }) => theme.bg3};
+  border: 1px solid #FD792F;
   border-radius: 20px;
   position: relative;
   display: grid;
   grid-row-gap: 12px;
   margin-bottom: 20px;
+
 `
 
 const AccountGroupingRow = styled.div`
@@ -67,7 +71,10 @@ const AccountGroupingRow = styled.div`
   justify-content: space-between;
   align-items: center;
   font-weight: 400;
-  color: ${({ theme }) => theme.text1};
+  color: white;
+
+
+ 
 
   div {
     ${({ theme }) => theme.flexRowNoWrap}
@@ -76,7 +83,7 @@ const AccountGroupingRow = styled.div`
 `
 
 const AccountSection = styled.div`
-  background-color: ${({ theme }) => theme.bg1};
+background:#1A1A1A;
   padding: 0rem 1rem;
   ${({ theme }) => theme.mediaWidth.upToMedium`padding: 0rem 1rem 1.5rem 1rem;`};
 `
@@ -98,14 +105,16 @@ const LowerSection = styled.div`
   padding: 1.5rem;
   flex-grow: 1;
   overflow: auto;
-  background-color: ${({ theme }) => theme.bg2};
+ 
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  background:#1A1A1A;
+
 
   h5 {
     margin: 0;
     font-weight: 400;
-    color: ${({ theme }) => theme.text3};
+    color: white !important;
   }
 `
 
@@ -114,12 +123,15 @@ const AccountControl = styled.div`
   justify-content: space-between;
   min-width: 0;
   width: 100%;
+  color:white !important;
 
   font-weight: 500;
   font-size: 1.25rem;
 
   a:hover {
     text-decoration: underline;
+  color:white !important;
+
   }
 
   p {
@@ -128,6 +140,8 @@ const AccountControl = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  color:white !important;
+
   }
 `
 
@@ -145,6 +159,7 @@ const AddressLink = styled(ExternalLink)<{ hasENS: boolean; isENS: boolean }>`
 const CloseIcon = styled.div`
   position: absolute;
   right: 1rem;
+  color:white;
   top: 14px;
   &:hover {
     cursor: pointer;
@@ -403,7 +418,7 @@ export default function AccountDetails({
         </LowerSection>
       ) : (
         <LowerSection>
-          <TYPE.body color={theme.text1}>Your transactions will appear here...</TYPE.body>
+          <TYPE.body color={"white"}>Your transactions will appear here...</TYPE.body>
         </LowerSection>
       )}
     </>

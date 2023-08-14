@@ -23,6 +23,7 @@ import PendingView from './PendingView'
 const CloseIcon = styled.div`
   position: absolute;
   right: 1rem;
+  color:white;
   top: 14px;
   &:hover {
     cursor: pointer;
@@ -47,23 +48,25 @@ const HeaderRow = styled.div`
   ${({ theme }) => theme.flexRowNoWrap};
   padding: 1rem 1rem;
   font-weight: 500;
-  color: ${props => (props.color === 'blue' ? ({ theme }) => theme.primary1 : 'inherit')};
+  color: white;
   ${({ theme }) => theme.mediaWidth.upToMedium`
     padding: 1rem;
   `};
 `
 
 const ContentWrapper = styled.div`
-  background-color: ${({ theme }) => theme.bg2};
+  background-color: #141414;
   padding: 2rem;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color:white !important;
   ${({ theme }) => theme.mediaWidth.upToMedium`padding: 1rem`};
 `
 
 const UpperSection = styled.div`
   position: relative;
+    background-color: #141414;
+
 
   h5 {
     margin: 0;
@@ -96,7 +99,8 @@ const Blurb = styled.div`
 
 const OptionGrid = styled.div`
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 10px; 
+  
   ${({ theme }) => theme.mediaWidth.upToMedium`
     grid-template-columns: 1fr;
     grid-gap: 10px;

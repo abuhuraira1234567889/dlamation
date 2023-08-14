@@ -19,7 +19,9 @@ export const LightCard = styled(Card)`
 `
 
 export const GreyCard = styled(Card)`
-  background-color: ${({ theme }) => theme.bg3};
+ background: linear-gradient(180deg, #FD792F 0%, #FF5C00 100%);
+ color:white !important;
+
 `
 
 export const OutlineCard = styled(Card)`

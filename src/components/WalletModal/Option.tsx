@@ -32,6 +32,10 @@ const OptionCardLeft = styled.div`
 
 const OptionCardClickable = styled(OptionCard as any)<{ clickable?: boolean }>`
   margin-top: 0;
+  background-color: #191411;
+  color: #fff;
+  border-radius: 6px;
+  border: 1px solid black;
   &:hover {
     cursor: ${({ clickable }) => (clickable ? 'pointer' : '')};
     border: ${({ clickable, theme }) => (clickable ? `1px solid ${theme.primary1}` : ``)};
@@ -62,7 +66,7 @@ const CircleWrapper = styled.div`
 
 const HeaderText = styled.div`
   ${({ theme }) => theme.flexRowNoWrap};
-  color: ${props => (props.color === 'blue' ? ({ theme }) => theme.primary1 : ({ theme }) => theme.text1)};
+  color: white !important;
   font-size: 1rem;
   font-weight: 500;
 `

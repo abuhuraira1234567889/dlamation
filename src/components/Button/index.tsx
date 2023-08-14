@@ -39,8 +39,8 @@ const Base = styled(RebassButton)<{
 `
 
 export const ButtonPrimary = styled(Base)`
-  background-color: #2BCC00;
-  color: white;
+ background: linear-gradient(180deg, #FD792F 0%, #FF5C00 100%);
+  color: white !important;
   &:focus {
     box-shadow: 0 0 0 1pt ${({ theme }) => darken(0.05, '#2BCC00')};
     background-color: ${({ theme }) => darken(0.05, '#2BCC00')};
@@ -53,13 +53,12 @@ export const ButtonPrimary = styled(Base)`
     background-color: ${({ theme }) => darken(0.1, '#2BCC00')};
   }
   &:disabled {
-    background-color: ${({ theme, altDisabledStyle }) => (altDisabledStyle ? theme.primary1 : theme.bg3)};
-    color: ${({ theme, altDisabledStyle }) => (altDisabledStyle ? 'white' : theme.text3)};
+    
     cursor: auto;
     box-shadow: none;
     border: 1px solid transparent;
     outline: none;
-    opacity: ${({ altDisabledStyle }) => (altDisabledStyle ? '0.7' : '1')};
+   opacity:0.2;
   }
 `
 
@@ -235,26 +234,28 @@ const ButtonConfirmedStyle = styled(Base)`
 `
 
 const ButtonErrorStyle = styled(Base)`
-  background-color: ${({ theme }) => theme.red1};
-  border: 1px solid ${({ theme }) => theme.red1};
+ border-radius: 8px;
+background: linear-gradient(180deg, #FD792F 0%, #FF5C00 100%);
+
 
   &:focus {
     box-shadow: 0 0 0 1pt ${({ theme }) => darken(0.05, theme.red1)};
-    background-color: ${({ theme }) => darken(0.05, theme.red1)};
-  }
+   background: linear-gradient(180deg, #FD792F 0%, #FF5C00 100%);
+
   &:hover {
-    background-color: ${({ theme }) => darken(0.05, theme.red1)};
+    background: linear-gradient(180deg, #FD792F 0%, #FF5C00 100%);
+
   }
   &:active {
     box-shadow: 0 0 0 1pt ${({ theme }) => darken(0.1, theme.red1)};
-    background-color: ${({ theme }) => darken(0.1, theme.red1)};
+    background: linear-gradient(180deg, #FD792F 0%, #FF5C00 100%);
+
   }
   &:disabled {
     opacity: 50%;
     cursor: auto;
     box-shadow: none;
-    background-color: ${({ theme }) => theme.red1};
-    border: 1px solid ${({ theme }) => theme.red1};
+opacity:0.3;
   }
 `
 

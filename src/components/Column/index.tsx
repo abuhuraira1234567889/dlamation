@@ -4,6 +4,10 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-color:#141414 !important;
+  color: #fff !important;
+  border-radius: 1px !important;
+  
 `
 export const ColumnCenter = styled(Column)`
   width: 100%;

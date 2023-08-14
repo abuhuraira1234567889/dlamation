@@ -21,7 +21,6 @@ import TokenWarningModal from '../../components/TokenWarningModal'
 import ProgressSteps from '../../components/ProgressSteps'
 import Settings from '../../components/Settings'
 
-
 import { BETTER_TRADE_LINK_THRESHOLD, INITIAL_ALLOWED_SLIPPAGE } from '../../constants'
 import { getTradeVersion, isTradeBetter } from '../../data/V1'
 import { useActiveWeb3React } from '../../hooks'
@@ -51,11 +50,11 @@ import styled from 'styled-components'
 const SwapHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 `
 const SwapText = styled.div`
   color: #fff;
- 
+
   font-size: 28px;
   font-style: normal;
   font-weight: 500;
@@ -304,10 +303,10 @@ export default function Swap() {
             swapErrorMessage={swapErrorMessage}
             onDismiss={handleConfirmDismiss}
           />
-         <SwapHeader>
-          <SwapText>Swap</SwapText>
-          <Settings/>
-         </SwapHeader>
+          <SwapHeader>
+            <SwapText>Swap</SwapText>
+            <Settings />
+          </SwapHeader>
 
           <AutoColumn gap={'md'}>
             <CurrencyInputPanel
@@ -404,7 +403,7 @@ export default function Swap() {
               </ButtonLight>
             ) : noRoute && userHasSpecifiedInputOutput ? (
               <GreyCard style={{ textAlign: 'center' }}>
-                <TYPE.main mb="4px">Insufficient liquidity for this trade.</TYPE.main>
+                <TYPE.main style={{color:"white"}} mb="4px">Insufficient liquidity for this trade.</TYPE.main>
               </GreyCard>
             ) : showApproveFlow ? (
               <RowBetween>
@@ -496,6 +495,7 @@ export default function Swap() {
         </Wrapper>
       </AppBody>
       <AdvancedSwapDetailsDropdown trade={trade} />
+      {/* <Footer/> */}
     </>
   )
 }
