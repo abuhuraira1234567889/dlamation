@@ -33,6 +33,8 @@ import usePrevious from '../../hooks/usePrevious'
 import Shabrium from '../../assets/svg/shablogo.svg'
 import './index.css'
 import Humberger from '../../assets/svg/humpburger.svg'
+import Down from '../../assets/svg/downgreen.svg'
+import LightDown from "../../assets/svg/LightDown.svg"
 
 const HeaderFrame = styled.div`
   display: grid;
@@ -43,7 +45,7 @@ const HeaderFrame = styled.div`
   flex-direction: row;
   width: 100%;
   top: 0;
-  position: relative;
+
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding: 1rem;
 
@@ -52,7 +54,7 @@ const HeaderFrame = styled.div`
     grid-template-columns: 1fr;
     padding: 0 1rem;
     width: calc(100%);
-    position: relative;
+    
   `};
 
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
@@ -286,6 +288,7 @@ export default function Header() {
   const { account, chainId } = useActiveWeb3React()
   const { t } = useTranslation()
   const [navOpen, setNavOpen] = useState(false)
+  const [active, setActive] = useState(1)
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [isDark] = useDarkModeManager()
@@ -319,7 +322,17 @@ export default function Header() {
           </Title>
           <div className={navOpen ? 'navbarOpen' : 'navshow'}>
             <div className="dropdown">
-              <button className="dropbtn">Trade</button>
+              <button
+                onClick={() => {
+                  setActive(1)
+                }}
+                className={active===1?"dropColor":"dropbtn"}
+              >
+                Trade
+                <span style={{ marginLeft: '7px' }}>
+                  <img src={active===1?Down:LightDown} />
+                </span>
+              </button>
               <div className="dropdown-content">
                 <a href="#">Swap</a>
                 <a href="/#/add"> Liquidity</a>
@@ -327,7 +340,17 @@ export default function Header() {
               </div>
             </div>
             <div className="dropdown">
-              <button className="dropbtn">Earn</button>
+              <button
+                onClick={() => {
+                  setActive(2)
+                }}
+                className={active===2?"dropColor":"dropbtn"}
+              >
+                Earn
+                <span style={{ marginLeft: '7px' }}>
+                  <img src={active===2?Down:LightDown} />
+                </span>
+              </button>
               <div className="dropdown-content">
                 <a href="#">Swap</a>
                 <a href="#"> Liquidity</a>
@@ -335,7 +358,17 @@ export default function Header() {
               </div>
             </div>
             <div className="dropdown">
-              <button className="dropbtn">xDAL</button>
+              <button
+                onClick={() => {
+                  setActive(3)
+                }}
+                className={active===3?"dropColor":"dropbtn"}
+              >
+                xDAL
+                <span style={{ marginLeft: '7px' }}>
+                  <img src={active===3?Down:LightDown} />
+                </span>
+              </button>
               <div className="dropdown-content">
                 <a href="#">Swap</a>
                 <a href="#"> Liquidity</a>
@@ -343,13 +376,34 @@ export default function Header() {
               </div>
             </div>
             <div className="dropdown">
-              <button className="dropbtn">Round Table</button>
+              <button
+                onClick={() => {
+                  setActive(4)
+                }}
+                className={active===4?"dropColor":"dropbtn"}
+              >
+                Round Table
+              </button>
             </div>
             <div className="dropdown">
-              <button className="dropbtn">Launchpad</button>
+              <button
+                onClick={() => {
+                  setActive(5)
+                }}
+                className={active===5?"dropColor":"dropbtn"}
+              >
+                Launchpad
+              </button>
             </div>
             <div className="dropdown">
-              <button className="dropbtn">More</button>
+              <button
+                onClick={() => {
+                  setActive(6)
+                }}
+                className={active===6?"dropColor":"dropbtn"}
+              >
+                More
+              </button>
             </div>
           </div>
 

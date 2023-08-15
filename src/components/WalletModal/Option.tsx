@@ -32,13 +32,13 @@ const OptionCardLeft = styled.div`
 
 const OptionCardClickable = styled(OptionCard as any)<{ clickable?: boolean }>`
   margin-top: 0;
-  background-color: #191411;
+  background-color: transparent !important;
   color: #fff;
   border-radius: 6px;
-  border: 1px solid black;
+  border: 1px solid black !important;
   &:hover {
     cursor: ${({ clickable }) => (clickable ? 'pointer' : '')};
-    border: ${({ clickable, theme }) => (clickable ? `1px solid ${theme.primary1}` : ``)};
+    border: 1px solid rgba(85, 151, 245, 0.50) !important;
   }
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
 `

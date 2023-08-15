@@ -92,15 +92,22 @@ const MenuFlyout = styled.span`
   right: 0rem;
   z-index: 100;
 
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    min-width: 18.125rem;
-    right: -46px;
-  `};
+  @media (max-width: 373px) {
 
-  ${({ theme }) => theme.mediaWidth.upToMedium`
-    min-width: 18.125rem;
-    top: -22rem;
-  `};
+    min-width: 15.125rem;
+
+   
+  }
+
+  // ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+  //   min-width: 18.125rem;
+  //   right: -46px;
+  // `};
+
+  // ${({ theme }) => theme.mediaWidth.upToMedium`
+  //   min-width: 18.125rem;
+  //   top: -22rem;
+  // `};
 `
 
 const Break = styled.div`

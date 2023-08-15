@@ -16,13 +16,15 @@ import { useActiveWeb3React } from '../../hooks'
 
 const Wrapper = styled.div`
   width: 100%;
+  background:#0C0C0C;
 `
 const Section = styled(AutoColumn)`
   padding: 24px;
 `
 
 const BottomSection = styled(Section)`
-  background-color: ${({ theme }) => theme.bg2};
+  background-color: #0C0C0C;
+  color:white;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 `
@@ -37,21 +39,21 @@ function ConfirmationPendingContent({ onDismiss, pendingText }: { onDismiss: () 
       <Section>
         <RowBetween>
           <div />
-          <CloseIcon onClick={onDismiss} />
+          <CloseIcon style={{color:"white"}} onClick={onDismiss} />
         </RowBetween>
         <ConfirmedIcon>
           <CustomLightSpinner src={Circle} alt="loader" size={'90px'} />
         </ConfirmedIcon>
         <AutoColumn gap="12px" justify={'center'}>
-          <Text fontWeight={500} fontSize={20}>
+          <Text style={{color:"white"}} fontWeight={500} fontSize={20}>
             Waiting For Confirmation
           </Text>
           <AutoColumn gap="12px" justify={'center'}>
-            <Text fontWeight={600} fontSize={14} color="" textAlign="center">
+            <Text style={{color:"white"}} fontWeight={600} fontSize={14} color="" textAlign="center">
               {pendingText}
             </Text>
           </AutoColumn>
-          <Text fontSize={12} color="#565A69" textAlign="center">
+          <Text style={{color:"white"}} fontSize={12} color="#565A69" textAlign="center">
             Confirm this transaction in your wallet
           </Text>
         </AutoColumn>
@@ -116,12 +118,12 @@ export function ConfirmationModalContent({
 }) {
   return (
     <Wrapper>
-      <Section>
+      <Section style={{background:"#0C0C0C",color:"white"}}>
         <RowBetween>
-          <Text fontWeight={500} fontSize={20}>
+          <Text style={{color:"white"}} fontWeight={500} fontSize={20}>
             {title}
           </Text>
-          <CloseIcon onClick={onDismiss} />
+          <CloseIcon style={{color:"white"}} onClick={onDismiss} />
         </RowBetween>
         {topContent()}
       </Section>

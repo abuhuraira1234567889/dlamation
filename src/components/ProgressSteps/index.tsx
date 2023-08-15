@@ -4,7 +4,9 @@ import { RowBetween } from '../Row'
 import { AutoColumn } from '../Column'
 import { transparentize } from 'polished'
 
-const Wrapper = styled(AutoColumn)``
+const Wrapper = styled(AutoColumn)`
+background:#0C0C0C;
+`
 
 const Grouping = styled(RowBetween)`
   width: 50%;
