@@ -90,7 +90,7 @@ export function AdvancedSwapDetails({ trade }: AdvancedSwapDetailsProps) {
       {trade && (
         <>
           <TradeSummary trade={trade} allowedSlippage={allowedSlippage} />
-          {showRoute && (
+          {/* {showRoute && (
             <>
               <SectionBreak />
               <AutoColumn style={{ padding: '0 24px' }}>
@@ -98,12 +98,12 @@ export function AdvancedSwapDetails({ trade }: AdvancedSwapDetailsProps) {
                   <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
                     Route
                   </TYPE.black>
-                  {/* <QuestionHelper text="Routing through these tokens resulted in the best price for your trade." /> */}
+                  <QuestionHelper text="Routing through these tokens resulted in the best price for your trade." />
                 </RowFixed>
                 <SwapRoute trade={trade} />
               </AutoColumn>
             </>
-          )}
+          )} */}
           {/* <AutoColumn style={{ padding: '0 24px' }}>
             <InfoLink href={'https://uniswap.info/pair/' + trade.route.pairs[0].liquidityToken.address} target="_blank">
               View pair analytics ↗
