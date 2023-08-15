@@ -6,8 +6,8 @@ import Dalmation from '../../assets/svg/daltamation.svg'
 import Circle from '../../assets/svg/threecircle.svg'
 import Tele from '../../assets/svg/telegram.svg'
 import Twitter from '../../assets/svg/twitter.svg'
-import Readit from "../../assets/svg/readit.svg"
-import Medium from "../../assets/svg/medium.svg"
+import Readit from '../../assets/svg/readit.svg'
+import Medium from '../../assets/svg/medium.svg'
 
 const Wrapper = styled.div``
 
@@ -22,12 +22,12 @@ function Footer() {
               <li style={{ color: '#737373' }}>© 2023 Dalmatian DEX. All rights reserved.</li>
               <div className="lowerBox">
                 <img src={Circle} />
-                <li style={{color:"white"}}>$1,084.589</li>
+                <li style={{ color: 'white' }}>$1,084.589</li>
               </div>
               <br />
               <div className="lowerBox">
-                <p style={{color:"#FD792F",fontSize:"10px",marginRight:"10px"}}>TVL</p>
-                <li style={{color:"white"}}>$1,084.589</li>
+                <p style={{ color: '#FD792F', fontSize: '10px', marginRight: '10px' }}>TVL</p>
+                <li style={{ color: 'white' }}>$1,084.589</li>
               </div>
             </ul>
             <ul className="box">
@@ -90,18 +90,22 @@ function Footer() {
             <ul className="box">
               <li className="link_name">Socials</li>
               <div>
-                <img src={Twitter}/>
-                <img src={Tele}/>
-
-                <img src={Medium}/>
-
-                <img src={Readit}/>
-
+                <a href="https://twitter.com/DalmatianDex">
+                  <img src={Twitter} />
+                </a>
+                <a href="https://t.me/dalmatiandex">
+                  <img src={Tele} />
+                </a>
+                <a href="https://medium.com/@Dalmatian">
+                  <img src={Medium} />
+                </a>
+                <a href="https://docs.dalmatian.exchange/">
+                  <img src={Readit} />
+                </a>
               </div>
             </ul>
           </div>
         </div>
-      
       </footer>
     </>
   )
