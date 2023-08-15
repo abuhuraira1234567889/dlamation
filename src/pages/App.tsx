@@ -45,6 +45,11 @@ const AppWrapper = styled.div`
   background-repeat: no-repeat;
   background-size: 100% 100%;
   height: 100vh;
+
+ 
+
+  
+
 `
 
 const HeaderWrapper = styled.div`
@@ -63,6 +68,14 @@ const BodyWrapper = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 10;
+    -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none; 
+  ::-webkit-scrollbar {
+  display: none;
+}
+
+
+
 
   ${({ theme }) => theme.mediaWidth.upToSmall`
     padding: 16px;

@@ -351,11 +351,11 @@ export default function Header() {
                   <img src={active===2?Down:LightDown} />
                 </span>
               </button>
-              <div className="dropdown-content">
+              {/* <div className="dropdown-content">
                 <a href="#">Swap</a>
                 <a href="#"> Liquidity</a>
-                {/* <a href="#">Link 3</a> */}
-              </div>
+               
+              </div> */}
             </div>
             <div className="dropdown">
               <button
@@ -369,11 +369,11 @@ export default function Header() {
                   <img src={active===3?Down:LightDown} />
                 </span>
               </button>
-              <div className="dropdown-content">
+              {/* <div className="dropdown-content">
                 <a href="#">Swap</a>
                 <a href="#"> Liquidity</a>
-                {/* <a href="#">Link 3</a> */}
-              </div>
+               
+              </div> */}
             </div>
             <div className="dropdown">
               <button
