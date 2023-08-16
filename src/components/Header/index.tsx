@@ -14,7 +14,7 @@ import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances, useAggregateUniBalance } from '../../state/wallet/hooks'
 import { CardNoise } from '../earn/styled'
 import { CountUp } from 'use-count-up'
-import { TYPE, ExternalLink } from '../../theme'
+import { TYPE, ExternalLink, CloseIcon } from '../../theme'
 
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
@@ -34,7 +34,8 @@ import Shabrium from '../../assets/svg/shablogo.svg'
 import './index.css'
 import Humberger from '../../assets/svg/humpburger.svg'
 import Down from '../../assets/svg/downgreen.svg'
-import LightDown from "../../assets/svg/LightDown.svg"
+import LightDown from '../../assets/svg/LightDown.svg'
+import CloseIcons from "../../assets/svg/close.png"
 
 const HeaderFrame = styled.div`
   display: grid;
@@ -306,6 +307,12 @@ export default function Header() {
 
   const countUpValue = aggregateBalance?.toFixed(0) ?? '0'
   const countUpValuePrevious = usePrevious(countUpValue) ?? '0'
+  const [show, setShow] = useState(false)
+  const [message, setMessage] = useState(false);
+
+  function onDismiss (){
+    setShow(false);
+  }
 
   return (
     <>
@@ -326,11 +333,11 @@ export default function Header() {
                 onClick={() => {
                   setActive(1)
                 }}
-                className={active===1?"dropColor":"dropbtn"}
+                className={active === 1 ? 'dropColor' : 'dropbtn'}
               >
                 Trade
                 <span style={{ marginLeft: '7px' }}>
-                  <img src={active===1?Down:LightDown} />
+                  <img src={active === 1 ? Down : LightDown} />
                 </span>
               </button>
               <div className="dropdown-content">
@@ -344,11 +351,11 @@ export default function Header() {
                 onClick={() => {
                   setActive(2)
                 }}
-                className={active===2?"dropColor":"dropbtn"}
+                className={active === 2 ? 'dropColor' : 'dropbtn'}
               >
                 Earn
                 <span style={{ marginLeft: '7px' }}>
-                  <img src={active===2?Down:LightDown} />
+                  <img src={active === 2 ? Down : LightDown} />
                 </span>
               </button>
               {/* <div className="dropdown-content">
@@ -362,11 +369,11 @@ export default function Header() {
                 onClick={() => {
                   setActive(3)
                 }}
-                className={active===3?"dropColor":"dropbtn"}
+                className={active === 3 ? 'dropColor' : 'dropbtn'}
               >
                 xDAL
                 <span style={{ marginLeft: '7px' }}>
-                  <img src={active===3?Down:LightDown} />
+                  <img src={active === 3 ? Down : LightDown} />
                 </span>
               </button>
               {/* <div className="dropdown-content">
@@ -380,7 +387,7 @@ export default function Header() {
                 onClick={() => {
                   setActive(4)
                 }}
-                className={active===4?"dropColor":"dropbtn"}
+                className={active === 4 ? 'dropColor' : 'dropbtn'}
               >
                 Round Table
               </button>
@@ -390,7 +397,7 @@ export default function Header() {
                 onClick={() => {
                   setActive(5)
                 }}
-                className={active===5?"dropColor":"dropbtn"}
+                className={active === 5 ? 'dropColor' : 'dropbtn'}
               >
                 Launchpad
               </button>
@@ -400,7 +407,7 @@ export default function Header() {
                 onClick={() => {
                   setActive(6)
                 }}
-                className={active===6?"dropColor":"dropbtn"}
+                className={active === 6 ? 'dropColor' : 'dropbtn'}
               >
                 More
               </button>
@@ -467,10 +474,29 @@ export default function Header() {
               </UNIAmount>
               <CardNoise />
             </UNIWrapper> */}
-            <div style={{ display: 'flex' }}>
-              <img src={Shabrium} />
-              <p style={{ marginLeft: '10px', marginRight: '10px', color: 'white' }}>Shibarium</p>
+
+            <div className="dropdown">
+              <button
+                style={{ background: 'transparent', border: 'none', width: '150px' }}
+                onClick={() => {
+                  setActive(1)
+                }}
+              >
+                <div style={{ display: 'flex' }}>
+                  <img src={Shabrium} />
+                  <p style={{ marginLeft: '10px', marginRight: '10px', color: 'white' }}>Puppy Net</p>
+                </div>
+              </button>
+              <div onClick={() => {setShow(!show)}} style={{ width: '100px' }} className="dropdown-content">
+                <div style={{ display: 'flex', paddingLeft: '10px' }}>
+                  <img src={Shabrium} />
+                  <a href="#">Shibarium</a>
+                </div>
+
+                {/* <a href="#">Link 3</a> */}
+              </div>
             </div>
+
             {/* {availableClaim && !showClaimPopup && (
             <UNIWrapper onClick={toggleClaimModal}>
               <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
@@ -522,6 +548,31 @@ export default function Header() {
           </HeaderElementWrap> */}
         </HeaderControls>
       </HeaderFrame>
+
+      {show && (
+        <div
+          style={{
+            position: 'absolute',
+            color: 'white',
+            right: '5%',
+            top: '10%',
+            background: '#FD792F',
+            width: '300px',
+            textAlign: 'center',
+            padding: '10px 0px',
+            zIndex: 1000,
+            display:"flex",
+            justifyContent:"space-around",
+            fontWeight: "bold",
+            borderRadius: "5px",
+            
+          }}
+        >
+          
+          <div >Coming Soon</div>
+          <img onClick={()=>{setShow(false)}} style={{width:"20px",cursor:"pointer"}} src={CloseIcons} alt="" />
+        </div>
+      )}
     </>
   )
 }
