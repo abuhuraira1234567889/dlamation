@@ -131,6 +131,7 @@ interface CurrencyInputPanelProps {
   showCommonBases?: boolean
   customBalanceText?: string
 }
+let a:any ='BONE'
 
 export default function CurrencyInputPanel({
   value,
@@ -155,6 +156,7 @@ export default function CurrencyInputPanel({
   const { account } = useActiveWeb3React()
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
   const theme = useContext(ThemeContext)
+console.log("ethh",currency);
 
   const handleDismissSearch = useCallback(() => {
     setModalOpen(false)
@@ -209,31 +211,24 @@ export default function CurrencyInputPanel({
               }
             }}
           >
+          
             <Aligner>
               {pair ? (
                 <DoubleCurrencyLogo currency0={pair.token0} currency1={pair.token1} size={24} margin={true} />
               ) : currency ? (
                 <CurrencyLogo currency={currency} size={'24px'} />
               ) : null}
-              {pair ? (
+              {/* {pair ? ( */}
                 <StyledTokenName className="pair-name-container">
-                  {pair?.token0.symbol}:{pair?.token1.symbol}
+                  {a}
                 </StyledTokenName>
-              ) : (
-                <StyledTokenName className="token-symbol-container" active={Boolean(currency && currency.symbol)}>
-                  {(currency && currency.symbol && currency.symbol.length > 20
-                    ? currency.symbol.slice(0, 4) +
-                      '...' +
-                      currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
-                    : currency?.symbol) || t('selectToken')}
-                </StyledTokenName>
-              )}
+              {/* ) } */}
               {!disableCurrencySelect && <StyledDropDown selected={!!currency} />}
             </Aligner>
           </CurrencySelect>
         </InputRow>
       </Container>
-      {!disableCurrencySelect && onCurrencySelect && (
+      {/* {!disableCurrencySelect && onCurrencySelect && (
         <CurrencySearchModal
           isOpen={modalOpen}
           onDismiss={handleDismissSearch}
@@ -242,7 +237,7 @@ export default function CurrencyInputPanel({
           otherSelectedCurrency={otherCurrency}
           showCommonBases={showCommonBases}
         />
-      )}
+      )} */}
     </InputPanel>
   )
 }

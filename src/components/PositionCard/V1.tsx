@@ -20,7 +20,7 @@ function V1PositionCard({ token, V1LiquidityBalance }: PositionCardProps) {
   const theme = useContext(ThemeContext)
 
   const { chainId } = useActiveWeb3React()
-
+console.log("id",chainId)
   return (
     <HoverCard>
       <AutoColumn gap="12px">

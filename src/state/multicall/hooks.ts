@@ -235,7 +235,7 @@ export function useSingleCallResult(
   options?: ListenerOptions
 ): CallState {
   const fragment = useMemo(() => contract?.interface?.getFunction(methodName), [contract, methodName])
-
+// console.log("nvnvnv",contract,fragment,)
   const calls = useMemo<Call[]>(() => {
     return contract && fragment && isValidMethodArgs(inputs)
       ? [

@@ -10,6 +10,7 @@ import { TokenAddressMap } from '../state/lists/hooks'
 
 // returns the checksummed address if the address is valid, otherwise returns false
 export function isAddress(value: any): string | false {
+  console.log("valueeee",value)
   try {
     return getAddress(value)
   } catch {
@@ -30,8 +31,8 @@ export function getEtherscanLink(
   data: string,
   type: 'transaction' | 'token' | 'address' | 'block'
 ): string {
-  const prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[719]}etherscan.io`
-
+  const prefix = `https://${ETHERSCAN_PREFIXES[719] || ETHERSCAN_PREFIXES[719]}etherscan.io`
+  console.log("etherr",prefix)
   switch (type) {
     case 'transaction': {
       return `${prefix}/tx/${data}`

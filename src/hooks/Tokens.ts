@@ -10,9 +10,11 @@ import { useActiveWeb3React } from './index'
 import { useBytes32TokenContract, useTokenContract } from './useContract'
 
 export function useAllTokens(): { [address: string]: Token } {
+
   const { chainId } = useActiveWeb3React()
   const userAddedTokens = useUserAddedTokens()
   const allTokens = useSelectedTokenList()
+console.log(chainId,allTokens,userAddedTokens,'shahhhhhh');
 
   return useMemo(() => {
     if (!chainId) return {}
@@ -60,8 +62,8 @@ export function useToken(tokenAddress?: string): Token | undefined | null {
   const tokenContract = useTokenContract(address ? address : undefined, false)
   const tokenContractBytes32 = useBytes32TokenContract(address ? address : undefined, false)
   const token: Token | undefined = address ? tokens[address] : undefined
-
   const tokenName = useSingleCallResult(token ? undefined : tokenContract, 'name', undefined, NEVER_RELOAD)
+  console.log("token",tokenName,chainId,address,tokenContract)
   const tokenNameBytes32 = useSingleCallResult(
     token ? undefined : tokenContractBytes32,
     'name',
