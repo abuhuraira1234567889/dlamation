@@ -484,7 +484,11 @@ export default function Header() {
               >
                 <div style={{ display: 'flex' }}>
                   <img src={Shabrium} />
-                  <p style={{ marginLeft: '10px', marginRight: '10px', color: 'white' }}>Puppy Net</p>
+                  <p style={{ marginLeft: '10px', marginRight: '10px', color: 'white' }}>Puppy Net
+                  <span style={{ marginLeft: '7px' }}>
+                  <img src={active === 1 ? Down : LightDown} />
+                </span>
+                  </p>
                 </div>
               </button>
               <div onClick={() => {setShow(!show)}} style={{ width: '100px' }} className="dropdown-content">
