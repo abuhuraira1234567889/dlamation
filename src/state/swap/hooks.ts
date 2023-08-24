@@ -115,6 +115,7 @@ export function useDerivedSwapInfo(): {
   inputError?: string
   v1Trade: Trade | undefined
 } {
+
   const { account } = useActiveWeb3React()
 
   const toggledVersion = useToggledVersion()
@@ -140,8 +141,11 @@ export function useDerivedSwapInfo(): {
   const isExactIn: boolean = independentField === Field.INPUT
   const parsedAmount = tryParseAmount(typedValue, (isExactIn ? inputCurrency : outputCurrency) ?? undefined)
 
+
   const bestTradeExactIn = useTradeExactIn(isExactIn ? parsedAmount : undefined, outputCurrency ?? undefined)
   const bestTradeExactOut = useTradeExactOut(inputCurrency ?? undefined, !isExactIn ? parsedAmount : undefined)
+
+  console.log(bestTradeExactIn , bestTradeExactOut)
 
   const v2Trade = isExactIn ? bestTradeExactIn : bestTradeExactOut
 
@@ -156,7 +160,10 @@ export function useDerivedSwapInfo(): {
   }
 
   // get link to trade on v1, if a better rate exists
-  const v1Trade = useV1Trade(isExactIn, currencies[Field.INPUT], currencies[Field.OUTPUT], parsedAmount)
+  // const v1Trade = useV1Trade(isExactIn, currencies[Field.INPUT], currencies[Field.OUTPUT], parsedAmount)
+  const v1Trade =undefined
+
+  
 
   let inputError: string | undefined
   if (!account) {

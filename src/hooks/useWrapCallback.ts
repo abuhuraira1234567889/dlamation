@@ -5,6 +5,7 @@ import { useTransactionAdder } from '../state/transactions/hooks'
 import { useCurrencyBalance } from '../state/wallet/hooks'
 import { useActiveWeb3React } from './index'
 import { useWETHContract } from './useContract'
+import { useCurrency } from './Tokens'
 
 export enum WrapType {
   NOT_APPLICABLE,
@@ -30,13 +31,14 @@ export default function useWrapCallback(
   // we can always parse the amount typed as the input currency, since wrapping is 1:1
   const inputAmount = useMemo(() => tryParseAmount(typedValue, inputCurrency), [inputCurrency, typedValue])
   const addTransaction = useTransactionAdder()
+  const WETH_ = useCurrency("0x34dc1dc0293Ec75E5c97C9ed778f8ACA39bdc821")
 
   return useMemo(() => {
     if (!wethContract || !chainId || !inputCurrency || !outputCurrency) return NOT_APPLICABLE
 
     const sufficientBalance = inputAmount && balance && !balance.lessThan(inputAmount)
 
-    if (inputCurrency === ETHER && currencyEquals(WETH[chainId], outputCurrency)) {
+    if (inputCurrency.name === "BONE" && currencyEquals(WETH_, outputCurrency)) {
       return {
         wrapType: WrapType.WRAP,
         execute:
@@ -52,7 +54,7 @@ export default function useWrapCallback(
             : undefined,
         inputError: sufficientBalance ? undefined : 'Insufficient ETH balance'
       }
-    } else if (currencyEquals(WETH[chainId], inputCurrency) && outputCurrency === ETHER) {
+    } else if (currencyEquals(WETH_, inputCurrency) && outputCurrency.name === "BONE") {
       return {
         wrapType: WrapType.UNWRAP,
         execute:

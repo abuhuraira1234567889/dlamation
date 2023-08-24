@@ -57,7 +57,7 @@ export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: b
 
 export function useWETHContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId ? WETH[chainId].address : undefined, WETH_ABI, withSignerIfPossible)
+  return useContract(chainId ? "0x34dc1dc0293Ec75E5c97C9ed778f8ACA39bdc821" : undefined, WETH_ABI, withSignerIfPossible)
 }
 
 export function useArgentWalletDetectorContract(): Contract | null {
@@ -71,6 +71,7 @@ export function useArgentWalletDetectorContract(): Contract | null {
 
 export function useENSRegistrarContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
+  
   let address: string | undefined
   if (chainId) {
     switch (chainId) {
@@ -99,7 +100,7 @@ export function usePairContract(pairAddress?: string, withSignerIfPossible?: boo
 
 export function useMulticallContract(): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && MULTICALL_NETWORKS[chainId], MULTICALL_ABI, false)
+  return useContract(chainId && "0x3A2E1AE809bf972EAD456B75c29833b8CDC882C8", MULTICALL_ABI, false)
 }
 
 export function useMerkleDistributorContract(): Contract | null {

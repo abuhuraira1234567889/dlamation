@@ -34,6 +34,8 @@ export default function CommonBases({
   selectedCurrency?: Currency | null
   onSelect: (currency: Currency) => void
 }) {
+
+
   return (
     <AutoColumn gap="md">
       <AutoRow>
@@ -51,12 +53,14 @@ export default function CommonBases({
           }}
           disable={selectedCurrency === ETHER}
         >
-          <CurrencyLogo currency={ETHER} style={{ marginRight: 8 }} />
+          {/* <CurrencyLogo currency={ETHER} style={{ marginRight: 8 }} />
+        */}
+          <CurrencyLogo style={{ marginRight: 8 }} />
           <Text fontWeight={500} fontSize={16}>
-            ETH
+            BONE
           </Text>
         </BaseWrapper>
-        {(chainId ? SUGGESTED_BASES[chainId] : []).map((token: Token) => {
+        {(chainId ? SUGGESTED_BASES[1] : []).map((token: Token) => {
           const selected = selectedCurrency instanceof Token && selectedCurrency.address === token.address
           return (
             <BaseWrapper onClick={() => !selected && onSelect(token)} disable={selected} key={token.address}>

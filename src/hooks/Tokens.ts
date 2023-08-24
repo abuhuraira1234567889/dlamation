@@ -78,7 +78,7 @@ export function useToken(tokenAddress?: string): Token | undefined | null {
     if (decimals.loading || symbol.loading || tokenName.loading) return null
     if (decimals.result) {
       return new Token(
-        chainId,
+        1,
         address,
         decimals.result[0],
         parseStringOrBytes32(symbol.result?.[0], symbolBytes32.result?.[0], 'UNKNOWN'),
@@ -104,5 +104,5 @@ export function useToken(tokenAddress?: string): Token | undefined | null {
 export function useCurrency(currencyId: string | undefined): Currency | null | undefined {
   const isETH = currencyId?.toUpperCase() === 'ETH'
   const token = useToken(isETH ? undefined : currencyId)
-  return isETH ? ETHER : token
+  return isETH ? new Currency(18 , "BONE" , "BONE") : token
 }

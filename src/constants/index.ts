@@ -3,7 +3,7 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
 
-export const ROUTER_ADDRESS = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D'
+export const ROUTER_ADDRESS = '0x2aB7a91De33FD7a00B4aDa6c324eD60CE307856d'
 
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
@@ -20,6 +20,19 @@ export const MKR = new Token(ChainId.MAINNET, '0x9f8F72aA9304c8B593d555F12eF6589
 export const AMPL = new Token(ChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth')
 export const WBTC = new Token(ChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 18, 'WBTC', 'Wrapped BTC')
 
+// shibarium
+
+export const WBONE = new Token(ChainId.MAINNET, '0x34dc1dc0293Ec75E5c97C9ed778f8ACA39bdc821', 18, 'WBONE', 'Wrapped BONE')
+export const Dog_Swap_Token = new Token(ChainId.MAINNET, '0x7509bdbf6824c0a0ca514c205410e23a648c264a', 18, 'DOG', 'Dog Swap Token')
+export const SHIBAV2 = new Token(ChainId.MAINNET, '0x1c4378b2763bb371b92a701050265488ec89391e', 18, 'SHIBAV2', 'SHIBA V2')
+export const BINU = new Token(ChainId.MAINNET, '0x5e5180bc787f693e68be47bb2496e1d5e0e2fa17', 18, 'BINU', 'Bone Inu')
+export const ShibEatX = new Token(ChainId.MAINNET, '0x5c11d588b60184328526f482107bc2ccdfa26463', 18, 'ShibEatX', 'ShibEatX')
+export const VALLHUND = new Token(ChainId.MAINNET, '0x83a5322521a0900f8c6dc65170ec666de2fc1f34', 18, 'VALLHUND', 'Vallhund Inu')
+export const DAL = new Token(ChainId.MAINNET, '0x6FeDd5a70acD61124ED975D8Dbda7fE704c1e132', 18, '$DAL', 'Dalmatian')
+
+
+
+
 // Block time here is slightly higher (~1s) than average in order to avoid ongoing proposals past the displayed time
 export const AVERAGE_BLOCK_TIME_IN_SECS = 14
 export const PROPOSAL_LENGTH_IN_BLOCKS = 40_320
@@ -32,6 +45,8 @@ export const TIMELOCK_ADDRESS = '0x1a9C8182C09F50C8318d769245beA52c32BE35BC'
 const UNI_ADDRESS = '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984'
 export const UNI: { [chainId in ChainId]: Token } = {
   [ChainId.MAINNET]: new Token(ChainId.MAINNET, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
+  // [ChainId.SHIB]: new Token(ChainId.MAINNET, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
+
   [ChainId.RINKEBY]: new Token(ChainId.RINKEBY, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
   [ChainId.ROPSTEN]: new Token(ChainId.ROPSTEN, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
   [ChainId.GÖRLI]: new Token(ChainId.GÖRLI, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
@@ -49,18 +64,20 @@ export const MERKLE_DISTRIBUTOR_ADDRESS: { [chainId in ChainId]?: string } = {
   [ChainId.MAINNET]: '0x090D4613473dEE047c3f2706764f49E0821D256e'
 }
 
-const WETH_ONLY: ChainTokenList = {
-  [ChainId.MAINNET]: [WETH[ChainId.MAINNET]],
+const WETH_ONLY: any = {
+  // [ChainId.MAINNET]: [WETH[ChainId.MAINNET]],
+  [ChainId.MAINNET]: [new Token(ChainId.MAINNET, "0x34dc1dc0293Ec75E5c97C9ed778f8ACA39bdc821", 18, "BONE", "Wrapped Bone")],
   [ChainId.ROPSTEN]: [WETH[ChainId.ROPSTEN]],
   [ChainId.RINKEBY]: [WETH[ChainId.RINKEBY]],
   [ChainId.GÖRLI]: [WETH[ChainId.GÖRLI]],
   [ChainId.KOVAN]: [WETH[ChainId.KOVAN]]
 }
 
+
 // used to construct intermediary pairs for trading
-export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
-  ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, COMP, MKR]
+export const BASES_TO_CHECK_TRADES_AGAINST: any = {
+  // ...WETH_ONLY,
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET]]
 }
 
 /**
@@ -74,9 +91,11 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 }
 
 // used for display in the default list when adding liquidity
-export const SUGGESTED_BASES: ChainTokenList = {
+export const SUGGESTED_BASES: any = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT]
+  // [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
+  [1]: [WBONE, DAL, Dog_Swap_Token, SHIBAV2, BINU, ShibEatX, VALLHUND]
+
 }
 
 // used to construct the list of all pairs we consider by default in the frontend

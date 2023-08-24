@@ -106,6 +106,8 @@ export default function Swap() {
     currencies[Field.OUTPUT],
     typedValue
   )
+
+  
   const showWrap: boolean = wrapType !== WrapType.NOT_APPLICABLE
   const { address: recipientAddress } = useENSAddress(recipient)
   const toggledVersion = useToggledVersion()
